@@ -40,6 +40,7 @@ backup_previous_config() {
 }
 
 install_configuration() {
+    echo "Grabbing remote configuration..."
 
 	# Remove conflicting setups if they exist
 	if [ -d $HOME/.vim ]; then
@@ -49,12 +50,19 @@ install_configuration() {
 
 	git clone https://github.com/DrSpeedy/vimrc.git $HOME/.vim
 	ln -s $HOME/.vim/vimrc $HOME/.vimrc
-	echo "Run vim and type ':PluginInstall' into the command window"
-	echo "Done."
+}
 
+install_vim_plugins() {
+    echo "Installing vim plugins..."
+
+    mkdir -p $HOME/.vim/bundle
+    git clone https://github.com/VundleVim/Vundle.vim $HOME/.vim/bundle/Vundle.vim
+    vim +PluginInstall +qall
 }
 
 check_dependencies
 check_if_already_installed
 install_configuration
+install_vim_plugins
 
+echo "Done."
