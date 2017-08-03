@@ -57,11 +57,15 @@ set backupdir=/tmp      "set backup file directory
 set dir=/tmp            "set swap file location
 
 "------------Mappings------------"
+
+"Insert timestamp
+nmap <Leader>ts :put =strftime('%Y-%m-%d')<cr>
+
 "Save files with sudo (root)
 cmap w!! %!sudo tee > /dev/null %<cr>:e!<cr><cr>
 
 "Enable line numbers
-nmap <Leader>en :set number!<cr>
+nmap <Leader>. :set number!<cr>
 
 "Make it easy to edit Vimrc file.
 nmap <Leader>ev :e $MYVIMRC<cr>
@@ -98,16 +102,16 @@ nmap <Leader><Leader>rp :e app/Repositories<cr>
 "/
 "/ NERDTree
 "/
-let NERDTreeHijackNetrw = 0
+let NERDTreeHijackNetrw = 1
 
 "toggle NERD Tree
-nmap <A-1> :NERDTreeToggle<cr>
+nmap <Leader>n :NERDTreeToggle<cr>
 
 "/
 "/ CtrlP
 "/
 let g:ctrlp_custom_ignore = 'node_modules\DS_Store\|git'
-let g:ctrlp_match_window = 'top,order:ttb,min:1,max:30,results:30'
+let g:ctrlp_match_window = 'order:ttb,min:1,max:30,results:12'
 
 "open CtrlP tag search (Ctrl-R)
 nmap <C-R> :CtrlPBufTag<cr>
@@ -124,16 +128,58 @@ nnoremap <leader>d :call pdv#DocumentWithSnip()<CR>
 "/
 "/ UltiSnips
 "/
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsSnippetsDir=$HOME."/.vim/UltiSnips"
+
+function! g:UltiSnips_Complete()
+  call UltiSnips#ExpandSnippet()
+  if g:ulti_expand_res == 0
+    if pumvisible()
+      return "\<C-n>"
+    else
+      call UltiSnips#JumpForwards()
+      if g:ulti_jump_forwards_res == 0
+        return "\<TAB>"
+      endif
+    endif
+  endif
+  return ""
+endfunction
+
+function! g:UltiSnips_Reverse()
+  call UltiSnips#JumpBackwards()
+  if g:ulti_jump_backwards_res == 0
+    return "\<C-P>"
+  endif
+
+  return ""
+endfunction
+
+
+if !exists("g:UltiSnipsJumpForwardTrigger")
+  let g:UltiSnipsJumpForwardTrigger = "<tab>"
+endif
+
+if !exists("g:UltiSnipsJumpBackwardTrigger")
+  let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+endif
+
+au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger     . " <C-R>=g:UltiSnips_Complete()<cr>"
+au InsertEnter * exec "inoremap <silent> " .     g:UltiSnipsJumpBackwardTrigger . " <C-R>=g:UltiSnips_Reverse()<cr>"
+
+"let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsJumpForwardTrigger="<Right>"
+"let g:UltiSnipsJumpBackwardTrigger="<Left>"
+"let g:UltiSnipsSnippetsDir=$HOME."/.vim/UltiSnips"
+
+"let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+"let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+"let g:SuperTabDefaultCompletionType = '<C-n>'
 
 "------------Auto Commands------------"
 augroup autosourcing
 	autocmd!
 	autocmd BufWritePost .vimrc source %	"Automatically source the Vimrc file on save
 augroup END
+
 
 "------------Powerline-----------"
 "Always show statusline

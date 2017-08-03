@@ -21,7 +21,10 @@ Plugin 'ervandew/supertab'
 "Plugin 'itchyny/lightline.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'tobyS/vmustache'
+Plugin 'honza/vim-snippets'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'tobyS/pdv'
+Plugin 'nathangrigg/vim-beancount'
 
 
 " All of your Plugins must be added before the following line
