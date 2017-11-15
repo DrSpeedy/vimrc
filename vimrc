@@ -70,6 +70,8 @@ nmap <Leader>. :set number!<cr>
 "Make it easy to edit Vimrc file.
 nmap <Leader>ev :e $MYVIMRC<cr>
 
+nmap <Leader>ei :e ~/.config/i3/<cr>:cd ~/.config/i3/<cr>
+
 "clear search results	
 nmap <Leader><space> :nohlsearch<cr>		
 
@@ -125,54 +127,6 @@ nmap <C-E> :CtrlPRMUFiles<cr>
 let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
 nnoremap <leader>d :call pdv#DocumentWithSnip()<CR>
 
-"/
-"/ UltiSnips
-"/
-
-function! g:UltiSnips_Complete()
-  call UltiSnips#ExpandSnippet()
-  if g:ulti_expand_res == 0
-    if pumvisible()
-      return "\<C-n>"
-    else
-      call UltiSnips#JumpForwards()
-      if g:ulti_jump_forwards_res == 0
-        return "\<TAB>"
-      endif
-    endif
-  endif
-  return ""
-endfunction
-
-function! g:UltiSnips_Reverse()
-  call UltiSnips#JumpBackwards()
-  if g:ulti_jump_backwards_res == 0
-    return "\<C-P>"
-  endif
-
-  return ""
-endfunction
-
-
-if !exists("g:UltiSnipsJumpForwardTrigger")
-  let g:UltiSnipsJumpForwardTrigger = "<tab>"
-endif
-
-if !exists("g:UltiSnipsJumpBackwardTrigger")
-  let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-endif
-
-au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger     . " <C-R>=g:UltiSnips_Complete()<cr>"
-au InsertEnter * exec "inoremap <silent> " .     g:UltiSnipsJumpBackwardTrigger . " <C-R>=g:UltiSnips_Reverse()<cr>"
-
-"let g:UltiSnipsExpandTrigger="<tab>"
-"let g:UltiSnipsJumpForwardTrigger="<Right>"
-"let g:UltiSnipsJumpBackwardTrigger="<Left>"
-"let g:UltiSnipsSnippetsDir=$HOME."/.vim/UltiSnips"
-
-"let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-"let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-"let g:SuperTabDefaultCompletionType = '<C-n>'
 
 "------------Auto Commands------------"
 augroup autosourcing
@@ -186,3 +140,7 @@ augroup END
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'base16'
+
+
+"------------vim-javascript-----------"
+let g:javascript_plugin_jsdoc = 1

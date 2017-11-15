@@ -19,12 +19,13 @@ Plugin 'Yggdroot/indentLine'
 "Plugin 'garbas/vim-snipmate'
 Plugin 'ervandew/supertab'
 "Plugin 'itchyny/lightline.vim'
-Plugin 'SirVer/ultisnips'
+"Plugin 'SirVer/ultisnips'
 Plugin 'tobyS/vmustache'
 Plugin 'honza/vim-snippets'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'tobyS/pdv'
-Plugin 'nathangrigg/vim-beancount'
+"Plugin 'nathangrigg/vim-beancount'
+Plugin 'pangloss/vim-javascript'
 
 
 " All of your Plugins must be added before the following line
