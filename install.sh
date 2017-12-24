@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Install the DrSpeedy i3wm configuration on any user
+# from remote repository
+
 WORKING_DIRECTORY="/tmp"
 SYS_DEPENDENCIES=('git')
 

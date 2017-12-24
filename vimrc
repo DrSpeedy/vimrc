@@ -9,11 +9,12 @@ let mapleader=','					"set <Leader>
 
 "------------Visuals------------"
 set t_Co=256						"force 256 colors if using terminal vim
-"set background=light                 "set background default to dark
-colorscheme luna                    "set the theme for vim
-set guifont=Source\ Code\ Pro\ 14        "set font to Liberation-Mono with fontsize 10
+set background=dark                 "set background default to dark
+colorscheme gruvbox                 "set the theme for vim
+set guifont=SauceCodePro\ Nerd\ Font\ Mono\ 14        "set font to Liberation-Mono with fontsize 10
 set guioptions-=e                   "Disable tabs
 set linespace=1						"gVim-specific line-height
+set number                          "Enable line numbers
 
 "Disable scrollbars in gVim
 set guioptions-=l
@@ -144,3 +145,21 @@ let g:airline_theme = 'base16'
 
 "------------vim-javascript-----------"
 let g:javascript_plugin_jsdoc = 1
+
+
+"------------vim-tmux-navigator-----------"
+" Write all buffers before navigating from Vim to tmux pane
+let g:tmux_navigator_save_on_switch = 2
+" Disable tmux navigator when zooming the Vim pane
+let g:tmux_navigator_disable_when_zoomed = 1
+
+
+"------------vimux-----------"
+" Prompt for a command to run
+map <Leader>vp :VimuxPromptCommand<CR>
+" Run last command executed by VimuxRunCommand
+map <Leader>vl :VimuxRunLastCommand<CR>
+" Inspect runner pane
+map <Leader>vi :VimuxInspectRunner<CR>
+" Zoom the tmux runner pane
+map <Leader>vz :VimuxZoomRunner<CR>
