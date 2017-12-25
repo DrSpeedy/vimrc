@@ -6,9 +6,9 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-vinegar'
-Plugin 'scrooloose/nerdtree'
+"Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+"Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -26,10 +26,24 @@ Plugin 'honza/vim-snippets'
 Plugin 'tobyS/pdv'                      " PHP Documentor
 "Plugin 'nathangrigg/vim-beancount'
 Plugin 'pangloss/vim-javascript'
-Plugin 'ryanoasis/vim-devicons'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'benmills/vimux'
+"Plugin 'christoomey/vim-tmux-navigator'
+"Plugin 'benmills/vimux'
 Plugin 'morhetz/gruvbox'
+
+"Vim shell
+Plugin 'Shougo/vimproc'
+Plugin 'Shougo/vimshell.vim'
+
+"File manager
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/vimfiler.vim'
+
+"Git
+Plugin 'tpope/vim-fugitive'
+Plugin 'ryanoasis/vim-devicons'
+
+"Startup
+Plugin 'mhinz/vim-startify'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

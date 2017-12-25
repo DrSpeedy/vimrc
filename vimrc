@@ -51,6 +51,7 @@ set softtabstop=4	    "use both spaces and tabs to simulate tabstops at a width
 set smarttab		    "indent new lines
 set expandtab		    "replace spaces with space
 set complete=.,w,b,u    "set auto completion
+set cursorline          "highlight current line
 
 "------------Swap/Backup Files------------"
 set backup              "enable backup files
@@ -79,6 +80,14 @@ nmap <Leader><space> :nohlsearch<cr>
 "toggle line indents
 nmap <Leader>il :IndentLinesToggle<cr>
 
+" Vim Shell
+" https://github.com/Shougo/vimshell.vim
+nmap ] :VimShell<cr>
+
+"Vim filer
+let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_safe_mode_by_default = 0
+
 "------------Laravel------------"
 "Artisan
 nmap <Leader>laa :!php artisan
@@ -101,15 +110,6 @@ nmap <Leader><Leader>dm :e app/Models<cr>
 nmap <Leader><Leader>rp :e app/Repositories<cr>
 
 "------------Plugins------------"
-
-"/
-"/ NERDTree
-"/
-let NERDTreeHijackNetrw = 1
-
-"toggle NERD Tree
-nmap <Leader>n :NERDTreeToggle<cr>
-
 "/
 "/ CtrlP
 "/
@@ -146,20 +146,3 @@ let g:airline_theme = 'base16'
 "------------vim-javascript-----------"
 let g:javascript_plugin_jsdoc = 1
 
-
-"------------vim-tmux-navigator-----------"
-" Write all buffers before navigating from Vim to tmux pane
-let g:tmux_navigator_save_on_switch = 2
-" Disable tmux navigator when zooming the Vim pane
-let g:tmux_navigator_disable_when_zoomed = 1
-
-
-"------------vimux-----------"
-" Prompt for a command to run
-map <Leader>vp :VimuxPromptCommand<CR>
-" Run last command executed by VimuxRunCommand
-map <Leader>vl :VimuxRunLastCommand<CR>
-" Inspect runner pane
-map <Leader>vi :VimuxInspectRunner<CR>
-" Zoom the tmux runner pane
-map <Leader>vz :VimuxZoomRunner<CR>
